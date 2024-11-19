@@ -25,18 +25,14 @@ const subAreas = [
   "Social Media",
 ];
 
-const disponibilidades = [
+const availability = [
   "5h/semanais",
   "10h/semanais",
   "15h/semanais",
   "+15h/semanais",
-]
+];
 
-const periodos = [
-  "Manhã",
-  "Tarde",
-  "Noite"
-]
+const period = ["Manhã", "Tarde", "Noite"];
 </script>
 
 <template>
@@ -58,22 +54,22 @@ const periodos = [
     <div class="checkboxes">
       <div class="workArea">
         <h2>Área de atuação</h2>
-        <Checkbox v-for="(workArea, index) in workAreas" :key="index" :label="workArea" />
+        <Checkbox v-for="(wK, index) in workAreas" :key="index" :label="wK" />
       </div>
 
       <div class="subArea">
         <h2>Sub-área</h2>
-        <Checkbox v-for="(subArea, index) in subAreas" :key="index" :label="subArea" />
+        <Checkbox v-for="(sA, index) in subAreas" :key="index" :label="sA" />
       </div>
-      
+
       <div class="availability">
         <h2>Disponibilidade</h2>
-        <Checkbox v-for="(disp, index) in disponibilidades" :key="index" :label="disp" />
+        <Checkbox v-for="(a, index) in availability" :key="index" :label="a" />
       </div>
 
       <div class="availableShift">
         <h2>Período de disponibilidade</h2>
-        <Checkbox v-for="(periodo, index) in periodos" :key="index" :label="periodo" />
+        <Checkbox v-for="(p, index) in period" :key="index" :label="p" />
       </div>
     </div>
   </aside>
@@ -82,20 +78,35 @@ const periodos = [
 <style scoped>
 aside {
   padding-left: 27px;
+  margin-right: 131px;
+  width: 100%;
+  max-width: max-content;
+  width: 100%;
+
 
   .roles {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin: 40px 141px 40px 0px;
+
+    input {
+      margin-right: 8px;
+    }
   }
 
-  .workArea, .subArea, .availability, .availableShift {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
-    h2 {
-      text-transform: uppercase;
-      font-size: 1rem;
+  .checkboxes {
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+      h2 {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
     }
   }
 }
