@@ -9,13 +9,12 @@ defineProps({
 
 <template>
   <label :for="label">
-    <input 
-      type="checkbox" 
-      :name="label" 
-      :id="label" 
-    /> 
-    {{ label }}
+    <input type="checkbox" :name="label" :id="label" />{{label}}
   </label>
 </template>
 
-<style scoped></style>
+<style scoped>
+input {
+  margin-right: 8px;
+}
+</style>
