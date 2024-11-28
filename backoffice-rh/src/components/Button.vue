@@ -28,6 +28,8 @@ defineProps({
   align-items: center;
   justify-content: center;
   width: fit-content;
+  margin-top: 8px;
+  height: 40px;
 
 
   img {
