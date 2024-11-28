@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from './Button.vue';
+import Button from "./Button.vue";
 </script>
 
 <template>
@@ -31,33 +31,34 @@ import Button from './Button.vue';
       </div>
     </div>
     <div class="contentOnRight">
-        <div class="filedsOnRight">
-            <div class="field">
-                <label>Data da Candidatura:</label>
-                <p>12/06/2024</p>
-            </div>
-            <div class="field">
-                <label>Status:</label>
-                <p>Ativo</p>
-            </div>
-            <div class="buttons">
-                <Button placeholder="Atrelar à vaga"/>
-            </div>
+      <div class="filedsOnRight">
+        <div class="field">
+          <label>Data da Candidatura:</label>
+          <p>12/06/2024</p>
         </div>
+        <div class="field">
+          <label>Status:</label>
+          <p>Ativo</p>
+        </div>
+      </div>
+      <div class="buttons">
+        <Button iconName="seta-direita.png" placeholder="Acessar Perfil" />
+        <Button iconName="mais.png" placeholder="Associar à vaga" />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .card {
-  background-color: #ccc;
-  max-width: 918px;
+  background-color: var(--secondary-color);
   width: 100%;
   max-height: 192px;
   padding: 21px 19px;
   border-radius: 16px;
   display: flex;
-  position: relative;
+  margin-right: 32px;
+  margin-bottom: 24px;
 
   .contentOnLeft,
   .contentOnRight {
@@ -72,10 +73,21 @@ import Button from './Button.vue';
   }
 
   .contentOnRight {
-    position: absolute;
-    right: 0;
-    padding-right: 21px;
-    background-color: green;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+
+    .buttons {
+      display: flex;
+      flex-direction: row-reverse;
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      height: 100%;
+      max-height: 40px;
+    }
   }
 }
 </style>
