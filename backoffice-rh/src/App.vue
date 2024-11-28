@@ -21,84 +21,93 @@ function toggleArrow() {
 <template>
   <div>
     <Header />
-    <div class="main">
+    <div class="main-section">
       <Aside />
       <div class="cards">
         <div class="order">
-          <div class="orderSelect">
-            <div class="selectPlaceholder" @click="toggleArrow">
+          <div class="order-select">
+            <div class="select-placeholder" @click="toggleArrow">
               <p>Classificar por</p>
               <img :src="arrowSrc" alt="Seta" />
             </div>
-            <div class="orderOptions" >
+            <div class="order-options" >
               <p :class="{ visible: !isArrowUp }">Mais Antigas para Recentes</p>
               <p :class="{ visible: !isArrowUp }">Mais Recentes para Antigas</p>
             </div>
           </div>
         </div>
-        <Card />
-        <Card />
-        <Card />
+        <div class="cards-section">
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.main {
+.main-section {
   display: flex;
-  .order {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .orderSelect {
-    margin: 68px 0px 24px 0px;
-    max-width: 230px;
-    width: 100%;
-    cursor: pointer;
-    
-    .selectPlaceholder {
-      padding: 4px 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--secondary-color);
+    .cards {
+      padding-right: 32px;
       width: 100%;
-
-      img {
-        height: fit-content;
-        max-width: 16px;
-        width: 100%;
-      }
-    }
-
-    .orderOptions {
-      
-      p {
-        display: none; /* Invisível inicialmente */
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        padding-left: 4.5px;
         
-        &.visible {
-          display: block;
-          opacity: 1;
-        }
-        &:hover{
-          background-color: var(--primary-color);
-          color: var(--secondary-text-color);
-          transition: .1s;
-        }
+        .order {
+          display: flex;
+          flex-direction: row-reverse;
+          
+          .order-select {
+            margin: 68px 0px 24px 0px;
+            max-width: 230px;
+            width: 100%;
+            cursor: pointer;
+            
+            .select-placeholder {
+              padding: 4px 8px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              background-color: var(--secondary-color);
+              width: 100%;
         
-      }
-    }
-  }
+              img {
+                height: fit-content;
+                max-width: 16px;
+                width: 100%;
+              }
+            }
 
-  .cards {
-    padding-right: 32px;
-    padding-left: 97.5px;
-    width: 100%;
-    border-left: 1px solid var(--secondary-color);
+            .order-options {
+              padding-right: 32px;
+              padding-left: 97.5px;
+              width: 100%;
+              
+              p {
+                display: none; /* Invisível inicialmente */
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+                padding-left: 4.5px;
+                
+                &.visible {
+                  display: block;
+                  opacity: 1;
+                }
+                &:hover{
+                  background-color: var(--primary-color);
+                  color: var(--secondary-text-color);
+                  transition: .1s;
+                }
+                
+              }
+            }
+          }
+        }
+
+        .cards-section {
+          border-left: 1px solid var(--secondary-color);
+          padding-left: 97.5px;
+        }    
   }
 }
 </style>
