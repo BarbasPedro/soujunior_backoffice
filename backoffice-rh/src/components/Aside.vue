@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Checkbox from "./Checkbox.vue";
+import Button from "./Button.vue";
 
 // Lista de áreas de atuação
 const workAreas = [
@@ -72,6 +73,8 @@ const period = ["Manhã", "Tarde", "Noite"];
         <Checkbox v-for="(p, index) in period" :key="index" :label="p" />
       </div>
     </div>
+
+    <Button placeholder="Pesquisar"/>
   </aside>
 </template>
 
