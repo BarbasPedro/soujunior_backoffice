@@ -1,7 +1,21 @@
 <script setup lang="ts">
+import { computed, ref } from "vue";
 import Aside from "./components/Aside.vue";
 import Card from "./components/Card.vue";
 import Header from "./components/Header.vue";
+
+// Define o estado reativo
+const isArrowUp = ref(true);
+
+// Computa dinamicamente o caminho da seta
+const arrowSrc = computed(() =>
+  isArrowUp.value ? "../public/seta-cima.png" : "../public/seta-baixo.png"
+);
+
+// Alterna entre seta para cima e para baixo
+function toggleArrow() {
+  isArrowUp.value = !isArrowUp.value;
+}
 </script>
 
 <template>
@@ -10,6 +24,20 @@ import Header from "./components/Header.vue";
     <div class="main">
       <Aside />
       <div class="cards">
+        <div class="order">
+          <div class="orderSelect">
+            <div class="selectPlaceholder" @click="toggleArrow">
+              <p>Classificar por</p>
+              <img :src="arrowSrc" alt="Seta" />
+            </div>
+            <div class="orderOptions" >
+              <p :class="{ visible: !isArrowUp }">Mais Antigas para Recentes</p>
+              <p :class="{ visible: !isArrowUp }">Mais Recentes para Antigas</p>
+            </div>
+          </div>
+        </div>
+        <Card />
+        <Card />
         <Card />
       </div>
     </div>
@@ -19,10 +47,58 @@ import Header from "./components/Header.vue";
 <style scoped>
 .main {
   display: flex;
-}
+  .order {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .orderSelect {
+    margin: 68px 0px 24px 0px;
+    max-width: 230px;
+    width: 100%;
+    cursor: pointer;
+    
+    .selectPlaceholder {
+      padding: 4px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--secondary-color);
+      width: 100%;
 
-.cards { 
-  padding-top: 172px;
-  width: 100%;
+      img {
+        height: fit-content;
+        max-width: 16px;
+        width: 100%;
+      }
+    }
+
+    .orderOptions {
+      
+      p {
+        display: none; /* Invisível inicialmente */
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        padding-left: 4.5px;
+        
+        &.visible {
+          display: block;
+          opacity: 1;
+        }
+        &:hover{
+          background-color: var(--primary-color);
+          color: var(--secondary-text-color);
+          transition: .1s;
+        }
+        
+      }
+    }
+  }
+
+  .cards {
+    padding-right: 32px;
+    padding-left: 97.5px;
+    width: 100%;
+    border-left: 1px solid var(--secondary-color);
+  }
 }
 </style>
