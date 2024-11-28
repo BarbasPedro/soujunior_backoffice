@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import '../styles/variables.css'
 
-const selectedIndex = ref<number>(0);
+const selectedIndex = ref<number>(1);
 
 // Função para atualizar o índice do link selecionado
 const selectLink = (index: number) => {
@@ -44,10 +45,11 @@ header {
   max-height: 116px;
   height: 100%;
   width: 100%;
-  background-color: #cfcfcf;
+  background-color: var(--primary-color);
   align-items: center;
   padding: 24px 22.5px;
   justify-content: space-between;
+  color: var(--secondary-text-color);
 
   h1 {
     font-size: 2.5rem;
@@ -102,7 +104,8 @@ nav {
     border-radius: 0px 0px 12px 12px;
 
     &.selected {
-      background-color: #cfcfcf;
+      background-color: var(--primary-color);
+      color: var(--secondary-text-color);
       font-weight: 600;
       font-size: 1.2rem;
     }
