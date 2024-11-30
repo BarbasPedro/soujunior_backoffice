@@ -1,22 +1,7 @@
 <script setup lang="ts">
 import Checkbox from "./Checkbox.vue";
 import Button from "./Button.vue";
-
-// Lista de áreas de atuação
-const workAreas = [
-  "Agilista",
-  "APM - Produto",
-  "Business",
-  "Data",
-  "Design",
-  "DevOps",
-  "Front-End",
-  "Marketing",
-  "Quality Assurance (QA)",
-  "Scrum Master",
-  "Tech Recruiter",
-  "Social Media",
-];
+import CheckboxList from "./CheckboxList.vue";
 
 const subAreas = [
   "Product Manager",
@@ -54,9 +39,8 @@ const period = ["Manhã", "Tarde", "Noite"];
 
     <div class="checkboxes">
       <div class="workArea">
-        <h2>Área de atuação</h2>
-        <Checkbox v-for="(wK, index) in workAreas" :key="index" :label="wK" />
-      </div>
+        <CheckboxList />
+    </div>
 
       <div class="subArea">
         <h2>Sub-área</h2>
