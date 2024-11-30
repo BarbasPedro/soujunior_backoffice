@@ -1,44 +1,91 @@
 <script setup lang="ts">
 import Button from "./Button.vue";
+
+defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  job: {
+    type: String,
+    required: true,
+  },
+  role: {
+    type: String,
+    required: false,
+    default: ''
+  },
+  available_period: {
+    type: String,
+    required: false,
+    default: ''
+  },
+  availability: {
+    type: String,
+    required: false,
+    default: ''
+  },
+  linkedin: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: false,
+    default: '01/01/2001'
+  },
+  status: {
+    type: String,
+    required: false,
+    default: ''
+  },
+});
+  
 </script>
 
 <template>
   <div class="card">
     <div class="contentOnLeft">
+      
       <div class="field">
-        <label>Nome:</label>
-        <p>Jane Cooper</p>
+        <label>Nome: </label>
+        <p>{{ name }}</p>
       </div>
+      
       <div class="field">
         <label>Área de Atuação:</label>
-        <p>Marketing</p>
+        <p>{{ job }}</p>
       </div>
+
       <div class="field">
         <label>Subárea de atuação:</label>
-        <p>Social Media</p>
+        <p>{{ role }}</p>
       </div>
+      
       <div class="field">
         <label>Período de Disponibilidade:</label>
-        <p>Manhã</p>
+        <p>{{ available_period }}</p>
       </div>
+
       <div class="field">
         <label>Disponibilidade:</label>
-        <p>Manhã</p>
+        <p>{{ availability }} horas</p>
       </div>
+
       <div class="field">
         <label>LinkedIn:</label>
-        <p>www.linkedin.com/in/janecooper</p>
+        <p>{{ linkedin }}</p>
       </div>
     </div>
     <div class="contentOnRight">
       <div class="filedsOnRight">
         <div class="field">
           <label>Data da Candidatura:</label>
-          <p>12/06/2024</p>
+          <p>{{ date }}</p>
         </div>
         <div class="field">
           <label>Status:</label>
-          <p>Ativo</p>
+          <p>{{ status }}</p>
         </div>
       </div>
       <div class="buttons">
@@ -62,6 +109,8 @@ import Button from "./Button.vue";
 
   .contentOnLeft,
   .contentOnRight {
+    width: 100%;
+    
     .field {
       display: flex;
       label {
@@ -73,7 +122,6 @@ import Button from "./Button.vue";
   }
 
   .contentOnRight {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: end;
