@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import Aside from "./components/Aside.vue";
 import Card from "./components/Card.vue";
 import Header from "./components/Header.vue";
+import axios from "axios";
 
 // Define o estado reativo
 const isArrowUp = ref(true);
@@ -16,6 +17,49 @@ const arrowSrc = computed(() =>
 function toggleArrow() {
   isArrowUp.value = !isArrowUp.value;
 }
+
+interface JobTitle {
+  id: number;
+  title: string;
+  is_active: boolean;
+}
+
+interface Volunteer {
+  id: number;
+  name: string;
+  linkedin: string;
+  email: string;
+  is_active: number;
+  jobtitle_id: number;
+}
+
+const volunteers = ref<Volunteer[]>([]);
+const jobTitles = ref<JobTitle[]>([]);
+
+const fetchVolunteers = async () => {
+  try {
+    const response = await axios.get("http://localhost:8000/volunteers");
+    volunteers.value = response.data;
+    console.log('Volunteers:', volunteers.value);
+  } catch (error) {
+    console.error("Erro ao buscar voluntários:", error);
+  }
+};
+
+const fetchJobs = async () => {
+  try {
+    const response = await axios.get("http://localhost:8000/jobtitles");
+    jobTitles.value = response.data;
+    console.log('Job Titles:', jobTitles.value);
+  } catch (error) {
+    console.error("Erro ao buscar áreas de atuação:", error);  
+  }
+}
+
+onMounted(() => {
+  fetchVolunteers();
+  fetchJobs();
+});
 </script>
 
 <template>
@@ -36,11 +80,16 @@ function toggleArrow() {
             </div>
           </div>
         </div>
-        <div class="cards-section">
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <ul class="cards-section">
+          <li v-for="volunteer in volunteers" :key="volunteer.id">
+            <Card 
+              :name="volunteer.name" 
+              :linkedin="volunteer.linkedin" 
+              :job="jobTitles.find(job => job.id === volunteer.jobtitle_id)?.title || ''"
+              :status="volunteer.is_active === 1? 'Ativo' : 'Inativo'"
+            />
+          </li>
+        </ul>
       </div>
     </div>
   </div>
