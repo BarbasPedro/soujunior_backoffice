@@ -76,26 +76,22 @@ function toggleArrow() {
             }
 
             .order-options {
-              padding-right: 32px;
-              padding-left: 97.5px;
-              width: 100%;
               
-              p {
+              p{
                 display: none; /* Invisível inicialmente */
                 opacity: 0;
                 transition: opacity 0.3s ease-in-out;
-                padding-left: 4.5px;
-                
+
                 &.visible {
                   display: block;
                   opacity: 1;
                 }
+
                 &:hover{
-                  background-color: var(--primary-color);
-                  color: var(--secondary-text-color);
-                  transition: .1s;
-                }
-                
+                    background-color: var(--primary-color);
+                    color: var(--secondary-text-color);
+                    transition: .1s;
+                  }
               }
             }
           }
