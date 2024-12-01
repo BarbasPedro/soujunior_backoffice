@@ -1,5 +1,62 @@
-# Vue 3 + TypeScript + Vite
+# SouJunior Backoffice RH
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Sistema de gerenciamento de voluntários do SouJunior, desenvolvido com Vue 3, TypeScript e Pinia.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 🚀 Funcionalidades
+
+- Visualização de voluntários em cards
+- Filtro por área de atuação
+- Indicador de status (Ativo/Inativo)
+- Interface moderna e responsiva
+
+## 🛠️ Tecnologias
+
+- Vue 3
+- TypeScript
+- Pinia (Gerenciamento de Estado)
+- Axios
+- Vite
+
+## 📋 Pré-requisitos
+
+- Node.js (versão recomendada: 18.x ou superior)
+- npm ou yarn
+
+## 🔧 Instalação
+
+1. Clone o repositório
+```bash
+git clone [url-do-repositorio]
+cd backoffice-rh
+```
+
+2. Instale as dependências
+```bash
+npm install
+```
+
+3. Inicie o servidor de desenvolvimento
+```bash
+npm run dev
+```
+
+## 🏗️ Estrutura do Projeto
+
+```
+src/
+├── components/        # Componentes Vue
+│   ├── Aside.vue     # Barra lateral com filtros
+│   ├── Card.vue      # Card de voluntário
+│   ├── CardList.vue  # Lista de cards
+│   └── Checkbox.vue  # Componente de checkbox
+├── stores/           # Stores Pinia
+│   └── jobsStore.ts  # Gerenciamento de estado dos jobs
+└── styles/           # Arquivos de estilo
+```
+
+## 🔄 Estado da Aplicação
+
+O gerenciamento de estado é feito com Pinia, permitindo:
+- Seleção múltipla de áreas de atuação
+- Filtragem dinâmica de voluntários
+- Estado persistente durante a navegação
