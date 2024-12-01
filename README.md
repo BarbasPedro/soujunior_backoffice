@@ -26,7 +26,7 @@ Sistema de gerenciamento de voluntários do SouJunior, desenvolvido com Vue 3, T
 
 1. Clone o repositório
 ```bash
-git clone [url-do-repositorio]
+git clone https://github.com/BarbasPedro/soujunior_backoffice.git
 cd backoffice-rh
 ```
 
