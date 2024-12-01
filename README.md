@@ -1,5 +1,7 @@
 # SouJunior Backoffice RH
 
+> ⚠️ **Nota**: Este projeto está em desenvolvimento ativo. Algumas funcionalidades podem estar incompletas ou sujeitas a mudanças.
+
 Sistema de gerenciamento de voluntários do SouJunior, desenvolvido com Vue 3, TypeScript e Pinia.
 
 ## 🚀 Funcionalidades
@@ -8,6 +10,16 @@ Sistema de gerenciamento de voluntários do SouJunior, desenvolvido com Vue 3, T
 - Filtro por área de atuação
 - Indicador de status (Ativo/Inativo)
 - Interface moderna e responsiva
+
+## ⚡ Status do Projeto
+
+O projeto está em desenvolvimento ativo, com as seguintes features planejadas:
+
+- [x] Layout base
+- [x] Listagem de voluntários
+- [x] Filtro por área de atuação
+- [ ] Ordenação de cards
+- [ ] Listagem de Mentores, Heads, Vagas e Apoiadores
 
 ## 🛠️ Tecnologias
 
