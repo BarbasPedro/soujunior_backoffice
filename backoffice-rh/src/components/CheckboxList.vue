@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import Checkbox from './Checkbox.vue';
+import { useJobsStore } from '../stores/jobsStore';
 
 interface JobTitle {
   id: number;
@@ -10,6 +11,11 @@ interface JobTitle {
 }
 
 const jobTitles = ref<JobTitle[]>([]);
+const jobsStore = useJobsStore();
+
+watch(() => jobsStore.getSelectedJobs, (newValue) => {
+  console.log('Jobs selecionados:', newValue);
+}, { deep: true });
 
 const fetchJobs = async () => {
   try {
@@ -24,6 +30,10 @@ const fetchJobs = async () => {
   }
 };
 
+const handleSelectedJobs = (jobId: number, isChecked: boolean) => { 
+  jobsStore.toggleJob(jobId)
+}
+
 onMounted(() => {
   fetchJobs();
 });
@@ -33,7 +43,11 @@ onMounted(() => {
     <ul>
         <h2>Área de atuação</h2>
         <li v-for="jobTitle in jobTitles" :key="jobTitle.id">
-          <Checkbox :label="jobTitle.title"/>
+          <Checkbox 
+            :label="jobTitle.title"
+            :checked="jobsStore.getSelectedJobs.includes(jobTitle.id)"
+            @change="(isChecked) => handleSelectedJobs(jobTitle.id, isChecked)"
+          />
         </li>
     </ul>
 </template>

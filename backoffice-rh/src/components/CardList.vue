@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import Card from "./Card.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import axios from "axios";
+import { useJobsStore } from "../stores/jobsStore";
 
 interface JobTitle {
   id: number;
@@ -18,10 +19,21 @@ interface Volunteer {
   jobtitle_id: number;
 }
 
+const jobsStore = useJobsStore();
 const volunteers = ref<Volunteer[]>([]);
 const jobTitles = ref<JobTitle[]>([]);
 const isLoading = ref(true);
 const error = ref<string>('');
+
+const filteredVolunteers = computed(() => {
+  const selectedJobs = jobsStore.getSelectedJobs;
+
+  if (selectedJobs.length === 0) return volunteers.value;
+
+  return volunteers.value.filter(volunteer =>
+    selectedJobs.includes(volunteer.jobtitle_id)
+  )
+})
 
 const fetchVolunteers = async () => {
   try {
@@ -66,8 +78,8 @@ onMounted(() => {
     <div v-if="error" class="error-message">{{ error }}</div>
     <div v-else-if="isLoading" class="loading">Carregando...</div>
     <ul v-else class="cards-section">
-      <li v-if="volunteers.length === 0" class="no-data">Nenhum voluntário encontrado</li>
-      <li v-else v-for="volunteer in volunteers" :key="volunteer.id">
+      <li v-if="filteredVolunteers.length === 0" class="no-data">Não há candidatos que correspondam à pesquisa.</li>
+      <li v-else v-for="volunteer in filteredVolunteers" :key="volunteer.id">
         <Card 
           :name="volunteer.name" 
           :linkedin="volunteer.linkedin" 
@@ -98,6 +110,8 @@ onMounted(() => {
 
   .loading, .no-data {
     text-align: center;
-    padding: 1rem;
+    padding-top: 72px;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 </style>
